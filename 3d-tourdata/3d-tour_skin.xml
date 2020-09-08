@@ -39,66 +39,6 @@
 
   </action>
 <!-- ********** -->
-<!-- Context menu -->
-<!-- id : contextmenu -->
-<!-- ********** -->
-  <contextmenu fullscreen="false" versioninfo="false" touch="true">
-    <item name="author" />
-    <item name="normal"        onclick="setViewNormal();
-" separator="true"/>
-    <item name="architectural" onclick="setViewArchitectural();
-"/>
-    <item name="littleplanet"  onclick="setViewLittlePlanet();
-"/>
-    <item name="fullscreenentry" onclick="enterFullscreen();
-" separator="true"/>
-  </contextmenu>
-
-  <events name="contextmenuevents" keep="true" 
-    onenterfullscreen="updateContextMenu" onexitfullscreen="updateContextMenu" 
-    onxmlcomplete="updateContextMenu" 
-    changetourlanguage="updateContextMenu" 
-    />
-  <events name="contextmenuvrevents" keep="true" 
-    onvravailable="updateContextMenu();" onvrunavailable="updateContextMenu();"
-    devices="html5"
-    />
-  <action name="updateContextMenu">
-    getmessage(contextmenu.item[author].caption, project_author_name);
-    getmessage(contextmenu.item[normal].caption, contextmenunormallabel);
-    getmessage(contextmenu.item[architectural].caption, contextmenuarchitecturallabel);
-    set(sceneisfull360, false);
-    if(scene[get(xml.scene)].full360,
-      sub(viewhfov, panoview.hmax, panoview.hmin);
-      if (viewhfov == 360,
-        sub(viewvfov, panoview.vmax, panoview.vmin);
-        if (viewvfov == 180,
-          set(sceneisfull360, true);
-        );
-      );
-    );
-    if (sceneisfull360 AND (device.webgl OR device.flash),
-      set(contextmenu.item[littleplanet].visible, true);
-      getmessage(contextmenu.item[littleplanet].caption, contextmenulittleplanetlabel);
-    ,
-      set(contextmenu.item[littleplanet].visible, false);
-    );
-    if (device.fullscreensupport,
-      if(tour_fullscreen,
-        getmessage(contextmenu.item[fullscreenentry].caption, contextmenucloseFsLabel);
-        set(contextmenu.item[fullscreenentry].onclick, exitFullscreen();
-);
-       ,
-        getmessage(contextmenu.item[fullscreenentry].caption, contextmenuopenFsLabel);
-        set(contextmenu.item[fullscreenentry].onclick, enterFullscreen();
-);
-      );
-     ,
-      set(contextmenu.item[fullscreenentry].visible, false);
-    );
-  </action>
-
-<!-- ********** -->
 <!-- Classic Control Bar -->
 <!-- id : controlBar_classic -->
 <!-- ********** -->
@@ -187,7 +127,7 @@
          alpha="0.8"
          edge="right" align="right"
          width="36" height="36"
-         zorder="5"
+         zorder="4"
          onover="controlBar_classicctrlbaronoveraction();"
          onout="controlBar_classicctrlbaronoutaction();"
          onhover="showTooltip('plugin', controlBar_classicmenuTooltipStyle, bottom);"
@@ -207,7 +147,7 @@
          align="bottom"
          x="0" y="10"
          url="%FIRSTXML%/graphics/classiccontrolbar/footer.png"
-         zorder="3"
+         zorder="2"
          width="40"
          height="40"
          scale9grid="10|10|80|80"
@@ -218,7 +158,7 @@
          align="bottom"
          x="0" y="10"
          type="container"
-         zorder="4"
+         zorder="3"
          width="40"
          height="40"
          visible="false"
@@ -485,6 +425,124 @@
 
 
 
+<!-- ********** -->
+<!-- Previous/Next Strips -->
+<!-- id : prevnexttheme2 -->
+<!-- ********** -->
+
+  <style name="prevnexttheme2btn_alpha_style" 
+    alpha="0.0" onover="set(alpha, 1);" onout="set(alpha, 0.0);"
+    devices="desktop"
+  />
+  <style name="prevnexttheme2btn_alpha_style" 
+    alpha="1.0"
+    devices="tablet.or.mobile"
+  />
+  <layer name="prevnexttheme2btn_prev_pano" keep="true" align="left"
+         height="102%"
+         width="5%"
+         type="container"
+         bgcapture="true"
+         bgalpha="0.20000000000000001"
+         bgcolor="0xeeeeee"
+         zorder="5"
+         onclick="loadPreviousScene();
+"
+         style="prevnexttheme2btn_alpha_style"
+         visible="false">
+    <layer name="prevnexttheme2prevPanoramaArrow" keep="true" align="center"
+         url="%FIRSTXML%/graphics/prevnextstrips/btn_scroll_left.png"
+         alpha="1"
+         zorder="0"
+         tooltip="prevnexttheme2prevSceneTip"
+         onhover="showTooltip('plugin',NULL,left);"
+         onout="hideTooltip();"
+         onclick="loadPreviousScene();
+"
+    />
+  </layer>
+
+  <layer name="prevnexttheme2btn_next_pano" keep="true" align="right"
+         height="102%"
+         width="5%"
+         type="container"
+         bgcapture="true"
+         bgalpha="0.20000000000000001"
+         bgcolor="0xeeeeee"
+         zorder="5"
+         onclick="loadNextScene();
+"
+         style="prevnexttheme2btn_alpha_style"
+         visible="false">
+    <layer name="prevnexttheme2nextPanoramaArrow" keep="true" align="center"
+         url="%FIRSTXML%/graphics/prevnextstrips/btn_scroll_right.png"
+         alpha="1"
+         zorder="0"
+         tooltip="prevnexttheme2nextSceneTip"
+         onhover="showTooltip('plugin',NULL,right);"
+         onout="hideTooltip();"
+         onclick="loadNextScene();
+"
+    />
+  </layer>
+
+  <events name="prevnexttheme2hideshowcontrolsevent" 
+    onTourStart="prevnexttheme2showPrevNextControls();"
+    keep="true"/>
+  <action name="prevnexttheme2hidePrevNextControls">
+    set(layer[prevnexttheme2btn_prev_pano].visible, false);
+    set(layer[prevnexttheme2btn_next_pano].visible, false);
+  </action>
+  <action name="prevnexttheme2showPrevNextControls">
+    set(layer[prevnexttheme2btn_prev_pano].visible, true);
+    set(layer[prevnexttheme2btn_next_pano].visible, true);
+  </action>
+
+
+<!-- ********** -->
+<!-- Radar -->
+<!-- id : radar -->
+<!-- ********** -->
+
+  <layer name="radar" keep="true"
+         url.flash="%FIRSTXML%/graphics/radar.swf"
+         url.html5="%FIRSTXML%/graphics/radar.js"
+         align="bottomright"
+         x="50" y="50"
+         heading="0.0"
+         headingoffset="0.0"
+         fillcolor="0xc4c4c4"
+         fillalpha="0.34509803921568627"
+         width="50"
+         height="50"
+         zorder="6"
+         visible="false"
+         active="true"
+         started="false"
+         />
+
+  <events name="radarevents"
+    onnewpano="radarOnNewPano" 
+    onTourStart="set(layer[radar].started, true);showradar();"
+    hidetourcontrols="hideradar();"
+    showtourcontrols="set(layer[radar].started, true);showradar();"
+    keep="true"/>
+
+  <action name="radarOnNewPano">
+    if(scene[get(xml.scene)].planar,
+      set(layer[radar].active, false);
+      hideradar();
+    ,
+      set(layer[radar].active, true);
+      set(layer[radar].heading, get(scene[get(xml.scene)].heading));
+      showradar();
+    );
+  </action>
+
+  <action name="hideradar">set(layer[radar].visible, false);</action>
+  <action name="showradar">if(tour_displaycontrols,if(layer[radar].active AND layer[radar].started,set(layer[radar].visible, true););,hideradar(););</action>
+
+
 <!-- ********* -->
 <!-- Gyroscope -->
 <!-- ********* -->
@@ -591,80 +649,6 @@
 </action>
 
 <!-- ********** -->
-<!-- Previous/Next Strips -->
-<!-- id : prevnexttheme2 -->
-<!-- ********** -->
-
-  <style name="prevnexttheme2btn_alpha_style" 
-    alpha="0.0" onover="set(alpha, 1);" onout="set(alpha, 0.0);"
-    devices="desktop"
-  />
-  <style name="prevnexttheme2btn_alpha_style" 
-    alpha="1.0"
-    devices="tablet.or.mobile"
-  />
-  <layer name="prevnexttheme2btn_prev_pano" keep="true" align="left"
-         height="102%"
-         width="5%"
-         type="container"
-         bgcapture="true"
-         bgalpha="0.20000000000000001"
-         bgcolor="0xeeeeee"
-         zorder="7"
-         onclick="loadPreviousScene();
-"
-         style="prevnexttheme2btn_alpha_style"
-         visible="false">
-    <layer name="prevnexttheme2prevPanoramaArrow" keep="true" align="center"
-         url="%FIRSTXML%/graphics/prevnextstrips/btn_scroll_left.png"
-         alpha="1"
-         zorder="0"
-         tooltip="prevnexttheme2prevSceneTip"
-         onhover="showTooltip('plugin',NULL,left);"
-         onout="hideTooltip();"
-         onclick="loadPreviousScene();
-"
-    />
-  </layer>
-
-  <layer name="prevnexttheme2btn_next_pano" keep="true" align="right"
-         height="102%"
-         width="5%"
-         type="container"
-         bgcapture="true"
-         bgalpha="0.20000000000000001"
-         bgcolor="0xeeeeee"
-         zorder="7"
-         onclick="loadNextScene();
-"
-         style="prevnexttheme2btn_alpha_style"
-         visible="false">
-    <layer name="prevnexttheme2nextPanoramaArrow" keep="true" align="center"
-         url="%FIRSTXML%/graphics/prevnextstrips/btn_scroll_right.png"
-         alpha="1"
-         zorder="0"
-         tooltip="prevnexttheme2nextSceneTip"
-         onhover="showTooltip('plugin',NULL,right);"
-         onout="hideTooltip();"
-         onclick="loadNextScene();
-"
-    />
-  </layer>
-
-  <events name="prevnexttheme2hideshowcontrolsevent" 
-    onTourStart="prevnexttheme2showPrevNextControls();"
-    keep="true"/>
-  <action name="prevnexttheme2hidePrevNextControls">
-    set(layer[prevnexttheme2btn_prev_pano].visible, false);
-    set(layer[prevnexttheme2btn_next_pano].visible, false);
-  </action>
-  <action name="prevnexttheme2showPrevNextControls">
-    set(layer[prevnexttheme2btn_prev_pano].visible, true);
-    set(layer[prevnexttheme2btn_next_pano].visible, true);
-  </action>
-
-
-<!-- ********** -->
 <!-- Floor plan -->
 <!-- id : floorPlan -->
 <!-- ********** -->
@@ -699,8 +683,8 @@
 				
 				<floorplanItem 
 					name="fpitemmain" 
-					width="1482" 
-					height="1251" 
+					width="1038" 
+					height="876" 
 					groupName="" 
 					url="floorplan/plan.png" 
 					title="project_floor_title"
@@ -930,7 +914,7 @@
 		<option name="area_border_color" value="f2f2f2" type="string" />
 		<option name="area_border_alpha" value="0" type="float" />
 		<option name="area_width" value="40" type="int" />
-		<option name="area_height" value="40" type="int" />
+		<option name="area_height" value="35" type="int" />
 		<option name="area_width_unit" value="percent" type="string" />
 		<option name="area_height_unit" value="percent" type="string" />
 		<option name="animation" value="false" type="bool" />
@@ -1014,41 +998,6 @@
 	/>
 	
 
-<action name="setViewLittlePlanet">
-	set(sceneisfull360, false);
-	if(scene[get(xml.scene)].full360,
-		sub(viewhfov, panoview.hmax, panoview.hmin);
-		if (viewhfov == 360,
-			sub(viewvfov, panoview.vmax, panoview.vmin);
-			if (viewvfov == 180,
-				set(sceneisfull360, true);
-			);
-		);
-	);
-	if (sceneisfull360 AND (device.webgl OR device.flash),
-		if(normalViewActivated,stopSetViewTweens(););
-		if(current_view_isflat === true,
-			setViewNonFlat(VFOV);
-		);
-		setViewLittlePlanetComplete();
-	);
-</action>
-
-<action name="setViewLittlePlanetComplete">
-	set(backtonormalfirst,false);
-	if(view.pannini GE 1.0, set(backtonormalfirst,true));
-	if(view.stereographic == false, set(backtonormalfirst,true));
-	if(backtonormalfirst, hideTooltip();tween(view.fisheye, 0.0 ,distance(1.0, 0.25), easeOutQuad, WAIT); );
-	set(view.stereographic, true);
-	set(view.fisheyefovlink, 1.5);
-	tween(view.architectural, 0.0, 0.25);
-	tween(view.vlookat, 90, distance(179, 1.50));
-	tween(view.pannini, 0.0, distance(1.0, 0.75), easeOutQuad, if(panniniViewActivated,restoreViewFromPannini();););
-	if(panoview.fovmax LE 150, set(view.fovmax, 150); , set(view.fovmax, get(panoview.fovmax)); );
-	tween(view.fisheye, 1.0, distance(1.0, 0.75));
-	tween(view.fov, 150, distance(179, 0.75));
-</action>
-
   <!-- Fullscreen Management -->
   <action name="exitFullScreen" devices="fullscreensupport">set(tour_fullscreen,false);js(setFullscreen(false));</action>
   <action name="enterFullScreen" devices="fullscreensupport">set(tour_fullscreen,true);js(setFullscreen(true));</action>
@@ -1065,55 +1014,6 @@
   <action name="enterFullScreenFallback">set(fullscreen,true);</action>
   
   <action name="resizeFullScreenEvent">delayedcall(0,updatescreen(););</action>
-
-<action name="setViewArchitectural">
-	if(normalViewActivated,stopSetViewTweens(););
-	if(current_view_isflat === true,
-		setViewNonFlat(VFOV);
-	);
-	setViewArchitecturalComplete();
-</action>
-
-<action name="setViewArchitecturalComplete">
-	set(view.fovmax, get(panoview.fovmax));
-	set(view.fisheyefovlink, 0.5);
-	tween(view.architectural, 1.0, distance(1.0, 0.45));
-	tween(view.pannini, 0.0, distance(1.0, 0.45), easeOutQuad, if(panniniViewActivated,restoreViewFromPannini();););
-	tween(view.fisheye, 0.0, distance(1.0, 0.45), easeOutQuad, 
-		set(view.stereographic,false);
-		tween(view.vlookat, get(panoview.v), distance(90, 0.45));
-	);
-	tween(view.fov, get(panoview.fov), distance(50, 0.45));
-</action>
-
-<action name="setViewNormal">
-	stopSetViewTweens();
-	if(current_view_isflat === true,
-		setViewNonFlat(VFOV);
-	);
-	setViewNormalComplete();
-</action>
-
-<action name="setViewNormalComplete">
-	set(view.fisheyefovlink, 0.5);
-	set(view.fovmax, get(panoview.fovmax));
-	tween(view.architectural, 0.0, distance(1.0, 0.45));
-	tween(view.pannini, 0.0, distance(1.0, 0.45), easeOutQuad, if(panniniViewActivated,restoreViewFromPannini();););
-	tween(view.vlookat, get(panoview.v), distance(90, 0.45));
-	tween(view.fov, get(panoview.fov), distance(50, 0.45));
-	tween(view.fisheye, 0.0, distance(1.0, 0.45),
-		set(view.stereographic,false);
-	);
-</action>
-
-<krpano normalViewActivated="true" />
-<action name="stopSetViewTweens">
-	stoptween(view.fov);
-	stoptween(view.vlookat);
-	stoptween(view.fisheye);
-	stoptween(view.architectural);
-	stoptween(view.pannini);
-</action>
 
   <!-- Hide / Show Controls -->
   <action name="hideTourControls">set(tour_displaycontrols, false);events.dispatch(hidetourcontrols);</action>
