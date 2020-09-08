@@ -426,50 +426,6 @@
 
 
 
-<!-- ********** -->
-<!-- Radar -->
-<!-- id : radar -->
-<!-- ********** -->
-
-  <layer name="radar" keep="true"
-         url.flash="%FIRSTXML%/graphics/radar.swf"
-         url.html5="%FIRSTXML%/graphics/radar.js"
-         align="bottomright"
-         x="50" y="50"
-         heading="0.0"
-         headingoffset="0.0"
-         fillcolor="0xc4c4c4"
-         fillalpha="0.34509803921568627"
-         width="50"
-         height="50"
-         zorder="5"
-         visible="false"
-         active="true"
-         started="false"
-         />
-
-  <events name="radarevents"
-    onnewpano="radarOnNewPano" 
-    onTourStart="set(layer[radar].started, true);showradar();"
-    hidetourcontrols="hideradar();"
-    showtourcontrols="set(layer[radar].started, true);showradar();"
-    keep="true"/>
-
-  <action name="radarOnNewPano">
-    if(scene[get(xml.scene)].planar,
-      set(layer[radar].active, false);
-      hideradar();
-    ,
-      set(layer[radar].active, true);
-      set(layer[radar].heading, get(scene[get(xml.scene)].heading));
-      showradar();
-    );
-  </action>
-
-  <action name="hideradar">set(layer[radar].visible, false);</action>
-  <action name="showradar">if(tour_displaycontrols,if(layer[radar].active AND layer[radar].started,set(layer[radar].visible, true););,hideradar(););</action>
-
-
 <!-- ********* -->
 <!-- Gyroscope -->
 <!-- ********* -->
@@ -602,7 +558,7 @@
 			<option name="display_radar" value="false" type="bool" />
 			<option name="close_on_click" value="false" type="bool" />
 			<option name="position" value="topright" type="string" />
-			<option name="zorder" value="7" type="int" />
+			<option name="zorder" value="6" type="int" />
 			<option name="use_i18n" value="true" type="bool" />
 		</settings>
 		
@@ -617,19 +573,19 @@
 					title="project_floor_title"
 					heading="90">
 							<spot name="spotmap121" posX="0.201986998" posY="0.627451003" heading="-178.0000000000021" desc="spotmap121_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano40" jsClick="spotmap121ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="15" iconHeight="20" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="40" iconHeight="50" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap122" posX="0.519868016" posY="0.631372988" heading="-179.60000000000139" desc="spotmap122_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano159" jsClick="spotmap122ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="15" iconHeight="20" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="40" iconHeight="50" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap123" posX="0.521522999" posY="0.352941006" heading="175.7999999999991" desc="spotmap123_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano38" jsClick="spotmap123ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="15" iconHeight="20" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="40" iconHeight="50" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap124" posX="0.220199004" posY="0.409803987" heading="0" desc="spotmap124_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano39" jsClick="spotmap124ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="15" iconHeight="20" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="40" iconHeight="50" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap194" posX="0.858085811" posY="0.630859375" heading="-90.200000000000372" desc="spotmap194_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano41" jsClick="spotmap194ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="15" iconHeight="20" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="40" iconHeight="50" iconAnchor="center" />
 							</spot>
 				</floorplanItem>
 			
@@ -850,7 +806,7 @@
 		<option name="refresh_content" value="false" type="bool" />
 		<option name="open_callback" value="addKolorFloorPlan('floorPlan', 'floorPlanArea_floorplanDIV');" type="string" />
 		<option name="close_callback" value="invokeKrFunction('closeKolorAreaCallback_floorPlanArea')" type="string" />
-		<option name="zorder" value="7" type="int" />
+		<option name="zorder" value="6" type="int" />
 		<option name="use_i18n" value="true" type="bool" />
 	</settings>
 	</ptplugin>
