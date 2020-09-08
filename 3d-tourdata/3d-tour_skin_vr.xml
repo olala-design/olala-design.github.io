@@ -6,14 +6,14 @@
 
 
   <style name="IconDefaultPointSpotStyle"
-         url="%FIRSTXML%/spots/camera_user_defaultpoint0.png"
+         url="%FIRSTXML%/spots/camera2_user_defaultpoint0.png"
          visible="false"
          edge="center"
          onhover="onhoverIconDefaultPointSpotStyle"
          onout="onoutIconDefaultPointSpotStyle"
 
          height="40"
-         width="60"
+         width="40"
          />
   <action name="onhoverIconDefaultPointSpotStyle">
     showtooltip('hotspot');

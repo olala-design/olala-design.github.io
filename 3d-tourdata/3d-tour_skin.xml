@@ -6,14 +6,14 @@
 
 
   <style name="IconDefaultPointSpotStyle"
-         url="%FIRSTXML%/spots/camera_user_defaultpoint0.png"
+         url="%FIRSTXML%/spots/camera2_user_defaultpoint0.png"
          visible="false"
          edge="center"
          onhover="onhoverIconDefaultPointSpotStyle"
          onout="onoutIconDefaultPointSpotStyle"
 
          height="40"
-         width="60"
+         width="40"
          />
   <action name="onhoverIconDefaultPointSpotStyle">
     showtooltip('hotspot');
@@ -555,7 +555,13 @@
 			<option name="title_decoration" value="normal" type="string" />
 			<option name="title_color" value="000000" type="string" />
 			<option name="display_orientation" value="false" type="bool" />
-			<option name="display_radar" value="false" type="bool" />
+			<option name="display_radar" value="true" type="bool" />
+			<option name="radar_radius" value="25" type="int" />
+			<option name="radar_line_width" value="1" type="int" />
+			<option name="radar_line_color" value="ffffff" type="string" />
+			<option name="radar_line_alpha" value="0.50000762951094835" type="float" />
+			<option name="radar_fill_color" value="ffffff" type="string" />
+			<option name="radar_fill_alpha" value="0.30000762951094834" type="float" />
 			<option name="close_on_click" value="false" type="bool" />
 			<option name="position" value="topright" type="string" />
 			<option name="zorder" value="6" type="int" />
@@ -629,6 +635,7 @@
 	
 	<events name="floorPlanEvents" 
 	onxmlcomplete="ifnot(floorPlanFloorPlanLoaded,set(tour_displayfloorplan,true););floorPlanActivateDefaultSpot();" 
+	onviewchanged="floorPlanOnViewChange();" 
 	onhidetourfloorplan="floorPlanCloseTourFloorPlan();" 
 	onshowtourfloorplan="if(tour_displayfloorplan,floorPlanOpenTourFloorPlan(););" 
 	onTourStart="floorPlanOpenTourFloorPlan();"
@@ -668,6 +675,15 @@
 		openKolorArea_floorPlanArea();
 	</action>
 	
+	<action name="floorPlanOnViewChange">
+		if (floorPlanFloorPlanLoaded == true,
+			ifnot(ptplugin[floorPlan].floorplanItems.selectedSpot == "",
+				ifnot(scene[get(xml.scene)].planar,
+					js(invokePluginFunction(floorPlan, changeDirection, get(xml.scene), get(view.hlookat), get(view.hfov)));
+				);
+			);
+		);
+	</action>
 	
 	<action name="floorPlanActivateSpot">
 		
@@ -689,6 +705,13 @@
 	<action name="floorPlanSelectActivatedSpot">
 		js(invokePluginFunction(floorPlan, selectSpot, %1, %2, %3));
 
+		if(%1 !== "",
+			if(scene[get(xml.scene)].planar,
+				js(invokePluginFunction(floorPlan, hideRadar));
+			,
+				js(invokePluginFunction(floorPlan, changeDirection, get(xml.scene), get(view.hlookat), get(view.hfov)));
+			);
+		);
 	</action>
 	
 	<action name="floorPlanDeactivateSpot">
