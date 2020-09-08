@@ -12,7 +12,8 @@
          onhover="onhoverIconDefaultPointSpotStyle"
          onout="onoutIconDefaultPointSpotStyle"
 
-
+         height="3"
+         width="5"
          />
   <action name="onhoverIconDefaultPointSpotStyle">
     showtooltip('hotspot');
@@ -426,80 +427,6 @@
 
 
 <!-- ********** -->
-<!-- Previous/Next Strips -->
-<!-- id : prevnexttheme2 -->
-<!-- ********** -->
-
-  <style name="prevnexttheme2btn_alpha_style" 
-    alpha="0.0" onover="set(alpha, 1);" onout="set(alpha, 0.0);"
-    devices="desktop"
-  />
-  <style name="prevnexttheme2btn_alpha_style" 
-    alpha="1.0"
-    devices="tablet.or.mobile"
-  />
-  <layer name="prevnexttheme2btn_prev_pano" keep="true" align="left"
-         height="102%"
-         width="5%"
-         type="container"
-         bgcapture="true"
-         bgalpha="0.20000000000000001"
-         bgcolor="0xeeeeee"
-         zorder="5"
-         onclick="loadPreviousScene();
-"
-         style="prevnexttheme2btn_alpha_style"
-         visible="false">
-    <layer name="prevnexttheme2prevPanoramaArrow" keep="true" align="center"
-         url="%FIRSTXML%/graphics/prevnextstrips/btn_scroll_left.png"
-         alpha="1"
-         zorder="0"
-         tooltip="prevnexttheme2prevSceneTip"
-         onhover="showTooltip('plugin',NULL,left);"
-         onout="hideTooltip();"
-         onclick="loadPreviousScene();
-"
-    />
-  </layer>
-
-  <layer name="prevnexttheme2btn_next_pano" keep="true" align="right"
-         height="102%"
-         width="5%"
-         type="container"
-         bgcapture="true"
-         bgalpha="0.20000000000000001"
-         bgcolor="0xeeeeee"
-         zorder="5"
-         onclick="loadNextScene();
-"
-         style="prevnexttheme2btn_alpha_style"
-         visible="false">
-    <layer name="prevnexttheme2nextPanoramaArrow" keep="true" align="center"
-         url="%FIRSTXML%/graphics/prevnextstrips/btn_scroll_right.png"
-         alpha="1"
-         zorder="0"
-         tooltip="prevnexttheme2nextSceneTip"
-         onhover="showTooltip('plugin',NULL,right);"
-         onout="hideTooltip();"
-         onclick="loadNextScene();
-"
-    />
-  </layer>
-
-  <events name="prevnexttheme2hideshowcontrolsevent" 
-    onTourStart="prevnexttheme2showPrevNextControls();"
-    keep="true"/>
-  <action name="prevnexttheme2hidePrevNextControls">
-    set(layer[prevnexttheme2btn_prev_pano].visible, false);
-    set(layer[prevnexttheme2btn_next_pano].visible, false);
-  </action>
-  <action name="prevnexttheme2showPrevNextControls">
-    set(layer[prevnexttheme2btn_prev_pano].visible, true);
-    set(layer[prevnexttheme2btn_next_pano].visible, true);
-  </action>
-
-
-<!-- ********** -->
 <!-- Radar -->
 <!-- id : radar -->
 <!-- ********** -->
@@ -515,7 +442,7 @@
          fillalpha="0.34509803921568627"
          width="50"
          height="50"
-         zorder="6"
+         zorder="5"
          visible="false"
          active="true"
          started="false"
@@ -659,7 +586,7 @@
 			<option name="background_lighter_color" value="ffffff" type="string" />
 			<option name="background_darker_color" value="cacaca" type="string" />
 			<option name="background_alpha" value="0" type="float" />
-			<option name="text_color" value="000000" type="string" />
+			<option name="text_color" value="ffffff" type="string" />
 
 			<option name="resize" value="true" type="bool" />
 			<option name="fp_selector" value="one" type="string" />
@@ -675,7 +602,7 @@
 			<option name="display_radar" value="false" type="bool" />
 			<option name="close_on_click" value="false" type="bool" />
 			<option name="position" value="topright" type="string" />
-			<option name="zorder" value="8" type="int" />
+			<option name="zorder" value="7" type="int" />
 			<option name="use_i18n" value="true" type="bool" />
 		</settings>
 		
@@ -690,19 +617,19 @@
 					title="project_floor_title"
 					heading="90">
 							<spot name="spotmap121" posX="0.201986998" posY="0.627451003" heading="-178.0000000000021" desc="spotmap121_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano40" jsClick="spotmap121ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="3" iconHeight="5" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap122" posX="0.519868016" posY="0.631372988" heading="-179.60000000000139" desc="spotmap122_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano159" jsClick="spotmap122ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="3" iconHeight="5" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap123" posX="0.521522999" posY="0.352941006" heading="175.7999999999991" desc="spotmap123_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano38" jsClick="spotmap123ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="3" iconHeight="5" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap124" posX="0.220199004" posY="0.409803987" heading="0" desc="spotmap124_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano39" jsClick="spotmap124ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="3" iconHeight="5" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap194" posX="0.858085811" posY="0.630859375" heading="-90.200000000000372" desc="spotmap194_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano41" jsClick="spotmap194ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="3" iconHeight="5" iconAnchor="center" />
 							</spot>
 				</floorplanItem>
 			
@@ -923,7 +850,7 @@
 		<option name="refresh_content" value="false" type="bool" />
 		<option name="open_callback" value="addKolorFloorPlan('floorPlan', 'floorPlanArea_floorplanDIV');" type="string" />
 		<option name="close_callback" value="invokeKrFunction('closeKolorAreaCallback_floorPlanArea')" type="string" />
-		<option name="zorder" value="8" type="int" />
+		<option name="zorder" value="7" type="int" />
 		<option name="use_i18n" value="true" type="bool" />
 	</settings>
 	</ptplugin>
