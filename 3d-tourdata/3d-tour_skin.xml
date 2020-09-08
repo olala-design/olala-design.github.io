@@ -12,8 +12,8 @@
          onhover="onhoverIconDefaultPointSpotStyle"
          onout="onoutIconDefaultPointSpotStyle"
 
-         height="150"
-         width="200"
+         height="60"
+         width="80"
          />
   <action name="onhoverIconDefaultPointSpotStyle">
     showtooltip('hotspot');
@@ -617,19 +617,19 @@
 					title="project_floor_title"
 					heading="90">
 							<spot name="spotmap121" posX="0.201986998" posY="0.627451003" heading="-178.0000000000021" desc="spotmap121_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano40" jsClick="spotmap121ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="80" iconHeight="80" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="30" iconHeight="30" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap122" posX="0.519868016" posY="0.631372988" heading="-179.60000000000139" desc="spotmap122_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano159" jsClick="spotmap122ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="80" iconHeight="80" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="30" iconHeight="30" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap123" posX="0.521522999" posY="0.352941006" heading="175.7999999999991" desc="spotmap123_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano38" jsClick="spotmap123ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="80" iconHeight="80" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="30" iconHeight="30" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap124" posX="0.220199004" posY="0.409803987" heading="0" desc="spotmap124_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano39" jsClick="spotmap124ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="80" iconHeight="80" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="30" iconHeight="30" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap194" posX="0.858085811" posY="0.630859375" heading="-90.200000000000372" desc="spotmap194_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano41" jsClick="spotmap194ActionSpotFloorPlan">
-								<icon url="spots/point_user_defaultmap0.png" iconWidth="80" iconHeight="80" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="30" iconHeight="30" iconAnchor="center" />
 							</spot>
 				</floorplanItem>
 			
