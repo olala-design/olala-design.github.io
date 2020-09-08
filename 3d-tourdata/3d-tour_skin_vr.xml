@@ -12,8 +12,8 @@
          onhover="onhoverIconDefaultPointSpotStyle"
          onout="onoutIconDefaultPointSpotStyle"
 
-         height="15"
-         width="30"
+         height="80"
+         width="100"
          />
   <action name="onhoverIconDefaultPointSpotStyle">
     showtooltip('hotspot');
