@@ -6,16 +6,9 @@
 
 
   <style name="IconDefaultPointSpotStyle"
-         url="%FIRSTXML%/spots/hotspot_animated_user_defaultpoint0.png"
+         url="%FIRSTXML%/spots/hotspot_image_user_defaultpoint0.png"
          visible="false"
-         frame="0"
-         lastframe="19"
-         framewidth="64"
-         frameheight="64"
-         stopspotsequence="false"
-         crop="0|0|64|64"
          edge="center"
-         onloaded="startspotanimation(0.1);"
          onhover="onhoverIconDefaultPointSpotStyle"
          onout="onoutIconDefaultPointSpotStyle"
 
@@ -31,6 +24,9 @@
 
   </action>
 
+
+
+  <!-- unsupported kind of display : PointMap -->
 
 
   <!-- unsupported kind of display : PointMap -->
