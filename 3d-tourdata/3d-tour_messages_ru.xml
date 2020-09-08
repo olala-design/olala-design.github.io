@@ -36,11 +36,11 @@
 
 
 	<data name="ru_project_floor_title"><![CDATA[]]></data>
-	<data name="ru_spotmap121_tooltip"><![CDATA[]]></data>
-	<data name="ru_spotmap122_tooltip"><![CDATA[]]></data>
-	<data name="ru_spotmap123_tooltip"><![CDATA[]]></data>
-	<data name="ru_spotmap124_tooltip"><![CDATA[]]></data>
-	<data name="ru_spotmap194_tooltip"><![CDATA[]]></data>
+	<data name="ru_spotmap121_tooltip"><![CDATA[Прихожая]]></data>
+	<data name="ru_spotmap122_tooltip"><![CDATA[Рабочий стол]]></data>
+	<data name="ru_spotmap123_tooltip"><![CDATA[Кухня]]></data>
+	<data name="ru_spotmap124_tooltip"><![CDATA[Санузел]]></data>
+	<data name="ru_spotmap194_tooltip"><![CDATA[Лоджия]]></data>
 
 
   <data name="ru_controlBar_classicopenFsTip"><![CDATA[Enter fullscreen]]></data>
