@@ -5,7 +5,7 @@
 <!--         Messages         -->
 <!-- ************************ -->
 
-  <data name="ru_project_title"><![CDATA[New Project]]></data>
+  <data name="ru_project_title"><![CDATA[3D тур]]></data>
 
 
 
@@ -16,7 +16,7 @@
 
   <data name="ru_pano38_title"><![CDATA[Кухня]]></data>
   <data name="ru_spotpoint89_tooltip"><![CDATA[Лоджия]]></data>
-  <data name="ru_spotpoint118_tooltip"><![CDATA[Кухня]]></data>
+  <data name="ru_spotpoint118_tooltip"><![CDATA[Рабочий стол]]></data>
 
 
   <data name="ru_pano41_title"><![CDATA[Лоджия]]></data>
@@ -35,7 +35,7 @@
 
 
 
-	<data name="ru_project_floor_title"><![CDATA[New Project]]></data>
+	<data name="ru_project_floor_title"><![CDATA[3D тур]]></data>
 	<data name="ru_spotmap121_tooltip"><![CDATA[]]></data>
 	<data name="ru_spotmap122_tooltip"><![CDATA[]]></data>
 	<data name="ru_spotmap123_tooltip"><![CDATA[]]></data>
@@ -43,7 +43,31 @@
 	<data name="ru_spotmap125_tooltip"><![CDATA[]]></data>
 
 
-  <data name="ru_floorPlanmenu_label"><![CDATA[Select a floor plan]]></data>
+  <data name="ru_contextmenuopenFsLabel"><![CDATA[Enter Fullscreen]]></data>
+  <data name="ru_contextmenucloseFsLabel"><![CDATA[Exit Fullscreen]]></data>
+  <data name="ru_contextmenunormallabel"><![CDATA[Normal View]]></data>
+  <data name="ru_contextmenuarchitecturallabel"><![CDATA[Architectural View]]></data>
+  <data name="ru_contextmenulittleplanetlabel"><![CDATA[Little Planet View]]></data>
+  <data name="ru_controlBar_classiczoomInTip"><![CDATA[Zoom in]]></data>
+  <data name="ru_controlBar_classiczoomOutTip"><![CDATA[Zoom out]]></data>
+  <data name="ru_controlBar_classicmoveLeftTip"><![CDATA[Move left]]></data>
+  <data name="ru_controlBar_classicmoveRightTip"><![CDATA[Move right]]></data>
+  <data name="ru_controlBar_classicmoveUpTip"><![CDATA[Move up]]></data>
+  <data name="ru_controlBar_classicmoveDownTip"><![CDATA[Move down]]></data>
+  <data name="ru_controlBar_classicopenFsTip"><![CDATA[Enter fullscreen]]></data>
+  <data name="ru_controlBar_classiccloseFsTip"><![CDATA[Exit fullscreen]]></data>
+  <data name="ru_controlBar_classicautorotateOnTip"><![CDATA[Start autorotation]]></data>
+  <data name="ru_controlBar_classicautorotateOffTip"><![CDATA[Stop autorotation]]></data>
+  <data name="ru_controlBar_classicshowThumbnailsTip"><![CDATA[Show thumbnails]]></data>
+  <data name="ru_controlBar_classichideThumbnailsTip"><![CDATA[Hide thumbnails]]></data>
+  <data name="ru_controlBar_classicdisplayHelpTip"><![CDATA[Show help screen]]></data>
+  <data name="ru_controlBar_classichideHelpTip"><![CDATA[Hide help screen]]></data>
+  <data name="ru_controlBar_classicdisplayControlsTip"><![CDATA[Show controls]]></data>
+  <data name="ru_controlBar_classichideControlsTip"><![CDATA[Hide controls]]></data>
+  <data name="ru_controlBar_classicctrlmodeDragTip"><![CDATA[Change control mode]]></data>
+  <data name="ru_controlBar_classicctrlmodeMoveTip"><![CDATA[Change control mode]]></data>
+  <data name="ru_prevnexttheme2prevSceneTip"><![CDATA[Previous Scene]]></data>
+  <data name="ru_prevnexttheme2nextSceneTip"><![CDATA[Next Scene]]></data>
 
 
   <data name="ru_vr_setup_hmd0"><![CDATA[SELECT YOUR HMD]]></data>
