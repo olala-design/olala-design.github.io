@@ -6,7 +6,7 @@
 
 
   <style name="IconDefaultPointSpotStyle"
-         url="%FIRSTXML%/spots/hotspot_image_user_defaultpoint0.png"
+         url="%FIRSTXML%/spots/camera_user_defaultpoint0.png"
          visible="false"
          edge="center"
          onhover="onhoverIconDefaultPointSpotStyle"
@@ -24,9 +24,6 @@
 
   </action>
 
-
-
-  <!-- unsupported kind of display : PointMap -->
 
 
   <!-- unsupported kind of display : PointMap -->

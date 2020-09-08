@@ -6,7 +6,7 @@
 
 
   <style name="IconDefaultPointSpotStyle"
-         url="%FIRSTXML%/spots/hotspot_image_user_defaultpoint0.png"
+         url="%FIRSTXML%/spots/camera_user_defaultpoint0.png"
          visible="false"
          edge="center"
          onhover="onhoverIconDefaultPointSpotStyle"
@@ -29,9 +29,6 @@
   <!-- unsupported kind of display : PointMap -->
 
 
-  <!-- unsupported kind of display : PointMap -->
-
-
 <!-- ********** -->
 <!-- Double Click -->
 <!-- id : doubleclick -->
@@ -46,6 +43,7 @@
 <!-- id : contextmenu -->
 <!-- ********** -->
   <contextmenu fullscreen="false" versioninfo="false" touch="true">
+    <item name="author" />
     <item name="normal"        onclick="setViewNormal();
 " separator="true"/>
     <item name="architectural" onclick="setViewArchitectural();
@@ -66,6 +64,7 @@
     devices="html5"
     />
   <action name="updateContextMenu">
+    getmessage(contextmenu.item[author].caption, project_author_name);
     getmessage(contextmenu.item[normal].caption, contextmenunormallabel);
     getmessage(contextmenu.item[architectural].caption, contextmenuarchitecturallabel);
     set(sceneisfull360, false);
@@ -700,26 +699,26 @@
 				
 				<floorplanItem 
 					name="fpitemmain" 
-					width="2964" 
-					height="2502" 
+					width="1482" 
+					height="1251" 
 					groupName="" 
 					url="floorplan/plan.png" 
 					title="project_floor_title"
 					heading="90">
 							<spot name="spotmap121" posX="0.201986998" posY="0.627451003" heading="-178.0000000000021" desc="spotmap121_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano40" jsClick="spotmap121ActionSpotFloorPlan">
-								<icon url="spots/hotspot_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap122" posX="0.519868016" posY="0.631372988" heading="-179.60000000000139" desc="spotmap122_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano159" jsClick="spotmap122ActionSpotFloorPlan">
-								<icon url="spots/hotspot_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap123" posX="0.521522999" posY="0.352941006" heading="175.7999999999991" desc="spotmap123_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano38" jsClick="spotmap123ActionSpotFloorPlan">
-								<icon url="spots/hotspot_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
 							</spot>
 							<spot name="spotmap124" posX="0.220199004" posY="0.409803987" heading="0" desc="spotmap124_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano39" jsClick="spotmap124ActionSpotFloorPlan">
-								<icon url="spots/hotspot_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
 							</spot>
-							<spot name="spotmap193" posX="0.856435657" posY="0.6328125" heading="-90.200000000000372" desc="spotmap193_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano41" jsClick="spotmap193ActionSpotFloorPlan">
-								<icon url="spots/pin_2d_hole_white_user_defaultmap1.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
+							<spot name="spotmap194" posX="0.858085811" posY="0.630859375" heading="-90.200000000000372" desc="spotmap194_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano41" jsClick="spotmap194ActionSpotFloorPlan">
+								<icon url="spots/point_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
 							</spot>
 				</floorplanItem>
 			
@@ -754,7 +753,7 @@
           mainloadscene(pano39);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
 
 </action>
-			<action name="spotmap193ActionSpotFloorPlan">
+			<action name="spotmap194ActionSpotFloorPlan">
           mainloadscene(pano41);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
 
 </action>
