@@ -30,31 +30,6 @@
   <!-- unsupported kind of display : PointMap -->
 
 
-    
-  <!-- Spot Style - Load panorama -->
-
-
-  <style name="IconLoadpanorama"
-         url="%FIRSTXML%/spots/hotspot_neutral_user_defaultpoint5.png"
-         visible="false"
-         edge="center"
-         onhover="onhoverIconLoadpanorama"
-         onout="onoutIconLoadpanorama"
-
-
-         />
-  <action name="onhoverIconLoadpanorama">
-    showtooltip('hotspot');
-  </action>
-  <action name="onoutIconLoadpanorama">
-    hideTooltip();
-
-
-
-  </action>
-
-
-
   <!-- Fullscreen Management -->
   <action name="exitFullScreen" devices="fullscreensupport">set(tour_fullscreen,false);js(setFullscreen(false));</action>
   <action name="enterFullScreen" devices="fullscreensupport">set(tour_fullscreen,true);js(setFullscreen(true));</action>
