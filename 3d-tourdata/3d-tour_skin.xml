@@ -572,8 +572,8 @@
 				
 				<floorplanItem 
 					name="fpitemmain" 
-					width="1038" 
-					height="876" 
+					width="519" 
+					height="438" 
 					groupName="" 
 					url="floorplan/plan.png" 
 					title="project_floor_title"
