@@ -6,9 +6,16 @@
 
 
   <style name="IconDefaultPointSpotStyle"
-         url="%FIRSTXML%/spots/hotspot_video_user_defaultpoint0.png"
+         url="%FIRSTXML%/spots/hotspot_animated_user_defaultpoint0.png"
          visible="false"
+         frame="0"
+         lastframe="19"
+         framewidth="64"
+         frameheight="64"
+         stopspotsequence="false"
+         crop="0|0|64|64"
          edge="center"
+         onloaded="startspotanimation(0.1);"
          onhover="onhoverIconDefaultPointSpotStyle"
          onout="onoutIconDefaultPointSpotStyle"
 
@@ -125,12 +132,6 @@
 
 
 
-    if (device.desktop,
-      set(layer[controlBar_classicbtn_display_help].x, get(controlBar_classicbutton_pos));
-      set(layer[controlBar_classicbtn_close_help  ].x, get(controlBar_classicbutton_pos));
-      inc(controlBar_classicbutton_pos, 36);
-    );
-
     if (device.fullscreensupport,
       set(layer[controlBar_classicbtn_openfs ].x, get(controlBar_classicbutton_pos));
       set(layer[controlBar_classicbtn_closefs].x, get(controlBar_classicbutton_pos));
@@ -138,16 +139,12 @@
     );
 
 
-
-    set(layer[controlBar_classicbtn_autorotate_on ].x, get(controlBar_classicbutton_pos));
-    set(layer[controlBar_classicbtn_autorotate_off].x, get(controlBar_classicbutton_pos));
+    set(layer[controlBar_classicbtn_display_floorplan].x, get(controlBar_classicbutton_pos));
+    set(layer[controlBar_classicbtn_hide_floorplan   ].x, get(controlBar_classicbutton_pos));
     inc(controlBar_classicbutton_pos, 36);
 
 
 
-    set(layer[controlBar_classicbtn_show_thumbnails].x, get(controlBar_classicbutton_pos));
-    set(layer[controlBar_classicbtn_hide_thumbnails].x, get(controlBar_classicbutton_pos));
-    inc(controlBar_classicbutton_pos, 36);
 
     if (device.desktop,
       set(layer[controlBar_classicbtn_ctrlmode_drag_to].x, get(controlBar_classicbutton_pos));
@@ -159,24 +156,6 @@
 
 
 
-    if (device.desktop,
-        set(layer[controlBar_classicbtn_right].x, get(controlBar_classicbutton_pos));
-        inc(controlBar_classicbutton_pos, 36);
-        set(layer[controlBar_classicbtn_left].x, get(controlBar_classicbutton_pos));
-        inc(controlBar_classicbutton_pos, 36);
-    );
-    if (device.desktop,
-        set(layer[controlBar_classicbtn_down].x, get(controlBar_classicbutton_pos));
-        inc(controlBar_classicbutton_pos, 36);
-        set(layer[controlBar_classicbtn_up].x, get(controlBar_classicbutton_pos));
-        inc(controlBar_classicbutton_pos, 36);
-    );
-    if (device.desktop,
-        set(layer[controlBar_classicbtn_out].x, get(controlBar_classicbutton_pos));
-        inc(controlBar_classicbutton_pos, 36);
-        set(layer[controlBar_classicbtn_in].x, get(controlBar_classicbutton_pos));
-        inc(controlBar_classicbutton_pos, 36);
-    );
 
 
     inc(controlBar_classicbutton_pos, 20);
@@ -272,93 +251,25 @@
             devices="desktop"
             />
 
-    <layer name="controlBar_classicbtn_in"
-            url="%FIRSTXML%/graphics/classiccontrolbar/btn_zoom_in.png"
-            ondown="viewControlZoomIn(false);"
-            onup="viewControlZoomStop();
-"
-            style="controlBar_classic_btn_style"
-            tooltip="controlBar_classiczoomInTip"
-            devices="desktop"
-            visible="false"
-            />
-    <layer name="controlBar_classicbtn_out"
-            url="%FIRSTXML%/graphics/classiccontrolbar/btn_zoom_out.png"
-            ondown="viewControlZoomOut(false);
-"
-            onup="viewControlZoomStop();
-"
-            style="controlBar_classic_btn_style"
-            tooltip="controlBar_classiczoomOutTip"
-            devices="desktop"
-            visible="false"
-            />
-
-    <layer name="controlBar_classicbtn_left"
-            url="%FIRSTXML%/graphics/classiccontrolbar/btn_move_left.png"
-            ondown="viewControlMoveLeft(false);
-"
-            onup="viewControlMoveHoriStop();
-"
-            style="controlBar_classic_btn_style"
-            tooltip="controlBar_classicmoveLeftTip"
-            devices="desktop"
-            visible="false"
-            />
-    <layer name="controlBar_classicbtn_right"
-            url="%FIRSTXML%/graphics/classiccontrolbar/btn_move_right.png"
-            ondown="viewControlMoveRight(false);
-"
-            onup="viewControlMoveHoriStop();
-"
-            style="controlBar_classic_btn_style"
-            tooltip="controlBar_classicmoveRightTip"
-            devices="desktop"
-            visible="false"
-            />
-
-    <layer name="controlBar_classicbtn_up"
-            url="%FIRSTXML%/graphics/classiccontrolbar/btn_move_up.png"
-            ondown="viewControlMoveUp(false);
-"
-            onup="viewControlMoveVertStop();
-"
-            style="controlBar_classic_btn_style"
-            tooltip="controlBar_classicmoveUpTip"
-            devices="desktop"
-            visible="false"
-            />
-    <layer name="controlBar_classicbtn_down"
-            url="%FIRSTXML%/graphics/classiccontrolbar/btn_move_down.png"
-            ondown="viewControlMoveDown(false);
-"
-            onup="viewControlMoveVertStop();
-"
-            style="controlBar_classic_btn_style"
-            tooltip="controlBar_classicmoveDownTip"
-            devices="desktop"
-            visible="false"
-            />
 
 
 
-  <layer name="controlBar_classicbtn_hide_thumbnails"
-         url="%FIRSTXML%/graphics/classiccontrolbar/btn_hide_thumbnails.png"
-         style="controlBar_classic_btn_style"
-         onclick="hideTourThumbnails();
+    <layer name="controlBar_classicbtn_display_floorplan"
+           url="%FIRSTXML%/graphics/classiccontrolbar/btn_floorplan.png"
+           onclick="showFloorplan();
 "
-         tooltip="controlBar_classichideThumbnailsTip"
-         visible="false"
-         />
-  <layer name="controlBar_classicbtn_show_thumbnails"
-         url="%FIRSTXML%/graphics/classiccontrolbar/btn_show_thumbnails.png"
-         style="controlBar_classic_btn_style"
-         onclick="showTourThumbnails();
+           style="controlBar_classic_btn_style"
+           visible="false"
+           tooltip="controlBar_classicdisplayFloorplanTip"
+           />
+    <layer name="controlBar_classicbtn_hide_floorplan"
+           url="%FIRSTXML%/graphics/classiccontrolbar/btn_floorplan.png"
+           onclick="hideFloorplan();
 "
-         tooltip="controlBar_classicshowThumbnailsTip"
-         visible="false"
-         />
-
+           style="controlBar_classic_btn_style"
+           visible="false"
+           tooltip="controlBar_classichideFloorplanTip"
+           />
 
 
     <layer name="controlBar_classicbtn_openfs"
@@ -380,41 +291,7 @@
             tooltip="controlBar_classiccloseFsTip"
             />
 
-    <layer name="controlBar_classicbtn_autorotate_on"
-            url="%FIRSTXML%/graphics/classiccontrolbar/btn_start_autorotation.png"
-            onclick="resumeautorotation();
-"
-            style="controlBar_classic_btn_style"
-            visible="false"
-            tooltip="controlBar_classicautorotateOnTip"
-            />
-    <layer name="controlBar_classicbtn_autorotate_off"
-            url="%FIRSTXML%/graphics/classiccontrolbar/btn_stop_autorotation.png"
-            onclick="pauseautorotation();
-"
-            style="controlBar_classic_btn_style"
-            visible="false"
-            tooltip="controlBar_classicautorotateOffTip"
-            />
 
-
-
-    <layer name="controlBar_classicbtn_display_help"
-            url="%FIRSTXML%/graphics/classiccontrolbar/btn_help.png"
-            onclick="controlBar_classicdisplayHelp();"
-            style="controlBar_classic_btn_style"
-            devices="desktop"
-            visible="false"
-            tooltip="controlBar_classicdisplayHelpTip"
-            />
-    <layer name="controlBar_classicbtn_close_help"
-            url="%FIRSTXML%/graphics/classiccontrolbar/btn_help.png"
-            onclick="controlBar_classiccloseHelp();"
-            style="controlBar_classic_btn_style"
-            visible="false"
-            devices="desktop"
-            tooltip="controlBar_classichideHelpTip"
-            />
 
 
 
@@ -467,31 +344,6 @@
 	);
 	</action>
 
-	<events name="controlBar_classichideshowthumbnailsevent" 
-		hidetourthumbnails="controlBar_classicupdateHideShowThumbnailsButtons();" 
-		showtourthumbnails="controlBar_classicupdateHideShowThumbnailsButtons();" 
-		keep="true" />
-	<action name="controlBar_classicHideHideShowThumbnailsButtons">
-		set(layer[controlBar_classicbtn_show_thumbnails].visible, false);
-		set(layer[controlBar_classicbtn_hide_thumbnails].visible, false);
-	</action>
-	<action name="controlBar_classicShowHideShowThumbnailsButtons">
-		if (tour_displaythumbnails,
-			set(layer[controlBar_classicbtn_hide_thumbnails].visible, true);
-			set(layer[controlBar_classicbtn_show_thumbnails].visible, false);
-		,
-			set(layer[controlBar_classicbtn_show_thumbnails].visible, true);
-			set(layer[controlBar_classicbtn_hide_thumbnails].visible, false);
-		);
-	</action>
-	<action name="controlBar_classicupdateHideShowThumbnailsButtons">
-		if (controlBar_classicIsOpened,
-			controlBar_classicShowHideShowThumbnailsButtons();
-		,
-			controlBar_classicHideHideShowThumbnailsButtons();
-		);
-	</action>
-
 
   <action name="controlBar_classichideMenuControls">
     set(controlBar_classicIsOpened, false);
@@ -500,22 +352,14 @@
     controlBar_classicupdateFullscreenButtons();
 
 
-    controlBar_classicupdateAutorotationButtons();
 
 
-    controlBar_classicupdateHideShowThumbnailsButtons();
-    set(layer[controlBar_classicbtn_up].visible  , false);
-    set(layer[controlBar_classicbtn_down].visible, false);
-    set(layer[controlBar_classicbtn_right].visible, false);
-    set(layer[controlBar_classicbtn_left].visible , false);
-    set(layer[controlBar_classicbtn_in].visible , false);
-    set(layer[controlBar_classicbtn_out].visible, false);
 
+    controlBar_classicupdateFloorplanButtons();
 
     controlBar_classicupdateControlModeButtons();
 
 
-    controlBar_classicupdateHelpButtons();
 
 
     if(controlBar_classicbackgroundwidthwhenclosed == 0,
@@ -550,85 +394,46 @@
 
   </action>
   <action name="controlBar_classicshowMenuButtons">
-    if (device.desktop,
-    set(layer[controlBar_classicbtn_up].visible  , true);
-    set(layer[controlBar_classicbtn_down].visible, true);
-    );
-    if (device.desktop,
-    set(layer[controlBar_classicbtn_right].visible, true);
-    set(layer[controlBar_classicbtn_left].visible , true);
-    );
-    if (device.desktop,
-    set(layer[controlBar_classicbtn_in].visible , true);
-    set(layer[controlBar_classicbtn_out].visible, true);
-    );
 
+    controlBar_classicupdateFloorplanButtons();
 
     controlBar_classicupdateControlModeButtons();
 
 
-    controlBar_classicupdateHelpButtons();
 
 
     controlBar_classicupdateFullscreenButtons();
 
 
-    controlBar_classicupdateAutorotationButtons();
 
 
-      controlBar_classicupdateHideShowThumbnailsButtons();
   </action>
 
-  <layer name="controlBar_classichelpScreen" align="center" keep="true" onclick="controlBar_classiccloseHelp();" url="%FIRSTXML%/graphics/classiccontrolbar/help_screen_bg.png" visible="false" zorder="97" height="10%" width="prop" />
 
-  <layer name="controlBar_classichelpScreenFg" align="center" keep="true" onclick="controlBar_classiccloseHelp();" displayed="false" 
-         url="%FIRSTXML%/graphics/classiccontrolbar/help_screen_fg.png" 
-         alpha="0.8" 
-         height="50%" 
-         width="prop" 
-         zorder="98"
-         visible="false" />
-  <action name="controlBar_classicdisplayHelp">
-    set(layer[controlBar_classichelpScreenFg].displayed,true);
-    set(layer[controlBar_classichelpScreen].visible,true);
-    tween(layer[controlBar_classichelpScreen].height, 50%, 1, easeOutQuad,
-      set(layer[controlBar_classichelpScreenFg].visible,true);
-    );
-    controlBar_classicupdateHelpButtons();
-  </action>
-  <action name="controlBar_classiccloseHelp">
-    set(layer[controlBar_classichelpScreenFg].displayed,false);
-    set(layer[controlBar_classichelpScreenFg].visible,false);
-    tween(layer[controlBar_classichelpScreen].height, 10%, 1, easeOutQuad,
-      set(layer[controlBar_classichelpScreen].visible,false);
-    );
-    controlBar_classicupdateHelpButtons();
-  </action>
-	<action name="controlBar_classicHideHelpButtons">
-		set(layer[controlBar_classicbtn_display_help].visible, false);
-		set(layer[controlBar_classicbtn_close_help].visible, false);
+	<events name="controlBar_classicDisplayFloorPlanEvents" 
+		onshowtourfloorplan="controlBar_classicupdateFloorplanButtons();" 
+		onhidetourfloorplan="controlBar_classicupdateFloorplanButtons();" 
+		keep="true" />
+	<action name="controlBar_classicHideFloorplanButtons">
+		set(layer[controlBar_classicbtn_display_floorplan].visible, false);
+		set(layer[controlBar_classicbtn_hide_floorplan].visible, false);
 	</action>
-	<action name="controlBar_classicShowHelpButtons">
-		if (layer[controlBar_classichelpScreenFg].displayed,
-			set(layer[controlBar_classicbtn_close_help].visible, true);
-			set(layer[controlBar_classicbtn_display_help].visible, false);
+	<action name="controlBar_classicShowFloorplanButtons">
+		if (tour_displayfloorplan,
+			set(layer[controlBar_classicbtn_hide_floorplan].visible, true);
+			set(layer[controlBar_classicbtn_display_floorplan].visible, false);
 		,
-			set(layer[controlBar_classicbtn_display_help].visible, true);
-			set(layer[controlBar_classicbtn_close_help].visible, false);
+			set(layer[controlBar_classicbtn_display_floorplan].visible, true);
+			set(layer[controlBar_classicbtn_hide_floorplan].visible, false);
 		);
 	</action>
-	<action name="controlBar_classicupdateHelpButtons">
-	if (device.desktop,
+	<action name="controlBar_classicupdateFloorplanButtons">
 		if (controlBar_classicIsOpened,
-			controlBar_classicShowHelpButtons();
+			controlBar_classicShowFloorplanButtons();
 		,
-			controlBar_classicHideHelpButtons();
+			controlBar_classicHideFloorplanButtons();
 		);
-	,
-		controlBar_classicHideHelpButtons();
-	);
 	</action>
-
 
 
 	<events name="controlBar_classicmenufullscreenchangeevent"
@@ -657,33 +462,6 @@
 			controlBar_classicShowFullscreenButtons();
 		,
 			controlBar_classicHideFullscreenButtons();
-		);
-	</action>
-
-	<events name="controlBar_classicAutorotationEvents"
-		onstartautorotation="controlBar_classicupdateAutorotationButtons();"
-		onresumeautorotation="controlBar_classicupdateAutorotationButtons();"
-		onstopautorotation="controlBar_classicupdateAutorotationButtons();"
-		onpauseautorotation="controlBar_classicupdateAutorotationButtons();"
-		keep="true"/>
-	<action name="controlBar_classicHideAutorotationButtons">
-		set(layer[controlBar_classicbtn_autorotate_off].visible, false);
-		set(layer[controlBar_classicbtn_autorotate_on].visible , false);
-	</action>
-	<action name="controlBar_classicShowAutorotationButtons">
-		if(autorotate.enabled == false,
-			set(layer[controlBar_classicbtn_autorotate_off].visible, false);
-			set(layer[controlBar_classicbtn_autorotate_on].visible , true);
-		,
-			set(layer[controlBar_classicbtn_autorotate_off].visible, true);
-			set(layer[controlBar_classicbtn_autorotate_on].visible , false);
-		);
-	</action>
-	<action name="controlBar_classicupdateAutorotationButtons">
-		if (controlBar_classicIsOpened,
-			controlBar_classicShowAutorotationButtons();
-		,
-			controlBar_classicHideAutorotationButtons();
 		);
 	</action>
 
@@ -1756,7 +1534,7 @@
 			<option name="background_color" value="f2f2f2" type="string" />
 			<option name="background_lighter_color" value="ffffff" type="string" />
 			<option name="background_darker_color" value="cacaca" type="string" />
-			<option name="background_alpha" value="1" type="float" />
+			<option name="background_alpha" value="0" type="float" />
 			<option name="text_color" value="000000" type="string" />
 
 			<option name="resize" value="true" type="bool" />
@@ -1786,7 +1564,7 @@
 					groupName="" 
 					url="floorplan/_10107510861090108610741086.jpg" 
 					title="project_floor_title"
-					heading="0">
+					heading="90">
 							<spot name="spotmap121" posX="0.201986998" posY="0.627451003" heading="-178.0000000000021" desc="spotmap121_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano40" jsClick="spotmap121ActionSpotFloorPlan">
 								<icon url="spots/pin_2d_hole_black_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
 							</spot>
@@ -1799,7 +1577,7 @@
 							<spot name="spotmap124" posX="0.220199004" posY="0.409803987" heading="0" desc="spotmap124_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano39" jsClick="spotmap124ActionSpotFloorPlan">
 								<icon url="spots/pin_2d_hole_black_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
 							</spot>
-							<spot name="spotmap125" posX="0.852648973" posY="0.666666985" heading="-178.0000000000021" desc="spotmap125_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano40" jsClick="spotmap125ActionSpotFloorPlan">
+							<spot name="spotmap125" posX="0.852648973" posY="0.666666985" heading="-90.200000000000372" desc="spotmap125_tooltip" descType="tooltip" groupName="" isScene="true" planar="false" scene="pano41" jsClick="spotmap125ActionSpotFloorPlan">
 								<icon url="spots/pin_2d_hole_black_user_defaultmap0.png" iconWidth="32" iconHeight="32" iconAnchor="center" />
 							</spot>
 				</floorplanItem>
@@ -1836,7 +1614,7 @@
 
 </action>
 			<action name="spotmap125ActionSpotFloorPlan">
-          mainloadscene(pano40);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
+          mainloadscene(pano41);lookat(get(panoview.h), get(panoview.v), get(panoview.fov));
 
 </action>
 	
@@ -1998,7 +1776,7 @@
 		<option name="close_text" value="floorPlandisplay_close_text" type="string" />
 
 		<option name="background_color" value="f2f2f2" type="string" />
-		<option name="background_alpha" value="1" type="float" />
+		<option name="background_alpha" value="0" type="float" />
 		<option name="overlay_displayed" value="false" type="bool" />
 		<option name="overlay_color" value="000000" type="string" />
 		<option name="overlay_alpha" value="0.50000762951094835" type="float" />
@@ -2010,7 +1788,7 @@
 		<option name="bottomright_radius" value="0" type="int" />
 		<option name="area_border_width" value="0" type="int" />
 		<option name="area_border_color" value="f2f2f2" type="string" />
-		<option name="area_border_alpha" value="1" type="float" />
+		<option name="area_border_alpha" value="0" type="float" />
 		<option name="area_width" value="40" type="int" />
 		<option name="area_height" value="40" type="int" />
 		<option name="area_width_unit" value="percent" type="string" />
@@ -2148,11 +1926,6 @@
   
   <action name="resizeFullScreenEvent">delayedcall(0,updatescreen(););</action>
 
-  <!-- Hide / Show Thumbnails -->
-  <action name="hideTourThumbnails">set(tour_displaythumbnails, false);events.dispatch(hidetourthumbnails);</action>
-  <action name="showTourThumbnails">set(tour_displaythumbnails, true); events.dispatch(showtourthumbnails);</action>
-
-
 <action name="setViewArchitectural">
 	if(normalViewActivated,stopSetViewTweens(););
 	if(current_view_isflat === true,
@@ -2206,146 +1979,6 @@
   <action name="hideTourControls">set(tour_displaycontrols, false);events.dispatch(hidetourcontrols);</action>
   <action name="showTourControls">set(tour_displaycontrols, true); events.dispatch(showtourcontrols);</action>
 
-
-<action name="viewControlZoomIn">
-	if(%1,
-		if(%2,
-			if(%2 LT view.fovmin,
-				zoomto(get(view.fovmin));
-			,
-				if(%2 LT view.fov,
-					zoomto(%2);
-				);
-			);
-		,
-			set(fov_moveforce, -1);
-			delayedcall(0.1, viewControlZoomStop());
-		);
-	,
-		set(fov_moveforce, -1);
-	);
-</action>
-<action name="viewControlZoomOut">
-	if(%1,
-		if(%2,
-			if(%2 GT view.fovmax,
-				zoomto(get(view.fovmax));
-			,
-				if(%2 GT view.fov,
-					zoomto(%2);
-				);
-			);
-		,
-			set(fov_moveforce, +1);
-			delayedcall(0.1, viewControlZoomStop());
-		);
-	,
-		set(fov_moveforce, +1);
-	);
-</action>
-<action name="viewControlZoomStop">
-	set(fov_moveforce, 0);
-</action>
-
-<action name="viewControlMoveUp">
-	if(%1,
-		if(%2,
-			set(isfullvertical, false);
-			ifnot(scene[get(xml.scene)].planar,
-				sub(viewvfov, panoview.vmax, panoview.vmin);
-				if (viewvfov == 180,
-					set(isfullvertical, true);
-				);
-			);
-			if(isfullvertical == false AND calc(view.vlookat-%2) LT view.vlookatmin,
-				moveto(get(view.hlookat), get(view.vlookatmin));
-			,
-				moveto(get(view.hlookat), calc(view.vlookat-%2));
-			);
-		,
-			set(vlookat_moveforce, -1);
-			delayedcall(0.1, viewControlMoveVertStop());
-		);
-	,
-		set(vlookat_moveforce, -1);
-	);
-</action>
-<action name="viewControlMoveDown">
-	if(%1,
-		if(%2,
-			set(isfullvertical, false);
-			ifnot(scene[get(xml.scene)].planar,
-				sub(viewvfov, panoview.vmax, panoview.vmin);
-				if (viewvfov == 180,
-					set(isfullvertical, true);
-				);
-			);
-			if(sceneisfull360 == false AND calc(view.vlookat+%2) GT view.vlookatmax,
-				moveto(get(view.hlookat), get(view.vlookatmax));
-			,
-				moveto(get(view.hlookat), calc(view.vlookat+%2));
-			);
-		,
-			set(vlookat_moveforce, +1);
-			delayedcall(0.1, viewControlMoveVertStop());
-		);
-	,
-		set(vlookat_moveforce, +1);
-	);
-</action>
-<action name="viewControlMoveLeft">
-	if(%1,
-		if(%2,
-			set(isfullhorizontal, false);
-			ifnot(scene[get(xml.scene)].planar,
-				sub(viewhfov, panoview.hmax, panoview.hmin);
-				if (viewhfov == 360,
-					set(isfullhorizontal, true);
-				);
-			);
-			if(isfullhorizontal == false AND calc(view.hlookat-%2) LT view.hlookatmin,
-				moveto(get(view.hlookatmin), get(view.vlookat));
-			,
-				moveto(calc(view.hlookat-%2), get(view.vlookat));
-			);
-		,
-			set(hlookat_moveforce, -1);
-			delayedcall(0.1, viewControlMoveHoriStop());
-		);
-	,
-		set(hlookat_moveforce, -1);
-	);
-</action>
-<action name="viewControlMoveRight">
-	if(%1,
-		if(%2,
-			set(isfullhorizontal, false);
-			ifnot(scene[get(xml.scene)].planar,
-				sub(viewhfov, panoview.hmax, panoview.hmin);
-				if (viewhfov == 360,
-					set(isfullhorizontal, true);
-				);
-			);
-			if(isfullhorizontal == false AND calc(view.hlookat+%2) GT view.hlookatmax,
-				moveto(get(view.hlookatmax), get(view.vlookat));
-			,
-				moveto(calc(view.hlookat+%2), get(view.vlookat));
-			);
-		,
-			set(hlookat_moveforce, +1);
-			delayedcall(0.1, viewControlMoveHoriStop());
-			
-		);
-	,
-		set(hlookat_moveforce, +1);
-	);
-</action>
-<action name="viewControlMoveHoriStop">
-	set(hlookat_moveforce, 0);
-</action>
-<action name="viewControlMoveVertStop">
-	set(vlookat_moveforce, 0);
-</action>
 
   <!-- FLOORPLAN -->
   <action name="hideFloorplan">set(tour_displayfloorplan, false);events.dispatch(onhidetourfloorplan);</action>
